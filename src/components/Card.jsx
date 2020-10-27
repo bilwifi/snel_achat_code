@@ -16,6 +16,7 @@ const CardStyle = styled(Card)`
     justify-content:center;
     flex-wrap: wrap;
 `;
+
 const CardContainer = () => {
     return ( 
         <CardStyle>
