@@ -17,13 +17,13 @@ const CardStyle = styled(Card)`
     flex-wrap: wrap;
 `;
 
-const CardContainer = () => {
+const CardContainer = ({data}) => {
     return ( 
         <CardStyle>
             
-                <CardDetail label="Puissance total" valeur="1000kw"/>
-                <CardDetail label="Puissance utilisée" valeur="100kw"/>
-                <CardDetail label="Puissance restante" valeur="900kw"/>
+                <CardDetail label={data.puissanceTotal+" Kw"} valeur="Puissance total"/>
+                <CardDetail label={data.puissanceConsommee+" Kw"}valeur="Puissance utilisée"/>
+                {/* <CardDetail label={(data.puissanceTotal-data.puissanceConsommee)+" Kw"} valeur="Puissance restante"/> */}
             
             </CardStyle>
      );

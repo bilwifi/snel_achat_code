@@ -10,7 +10,7 @@ import {
 
 import Home from "../views/Home";
 import FactureList from "../views/FactureList";
-import AchatFormulaire from "../views/AchatFormulaire";
+// import AchatFormulaire from "../views/AchatFormulaire";
 
 const Routes = () => {
   return (
@@ -21,9 +21,7 @@ const Routes = () => {
       <Route path="/factures">
         <FactureList />
       </Route>
-      <Route path="/achat">
-        <AchatFormulaire />
-      </Route>
+      
     </Switch>
   );
 };
