@@ -2,16 +2,23 @@ import React from "react";
 /* Imports */
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
+import am4themes_dark from "@amcharts/amcharts4/themes/dark";
+import am4themes_dataviz from "@amcharts/amcharts4/themes/dataviz";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
-
-export default function Chart({data,percent}) {
-  const [puissanceTotal,setPuissanceTotal] = React.useState(data.puissanceTotal);
-  const [puissanceConsommee,setPuissanceConsommee] = React.useState(data.puissanceConsommee);
-  const [handState,setHandState] = React.useState([]);
+export default function Chart({ data, percent }) {
+  const [puissanceTotal, setPuissanceTotal] = React.useState(
+    data.puissanceTotal
+  );
+  const [puissanceConsommee, setPuissanceConsommee] = React.useState(
+    data.puissanceConsommee
+  );
+  const [handState, setHandState] = React.useState([]);
   React.useEffect(() => {
     /* Chart code */
     // Themes begin
+    am4core.useTheme(am4themes_dark);
+    am4core.useTheme(am4themes_dataviz);
     am4core.useTheme(am4themes_animated);
     // Themes end
 
@@ -88,7 +95,7 @@ export default function Chart({data,percent}) {
     hand.startWidth = 10;
     hand.pin.disabled = true;
     hand.value = 50;
-  
+
     hand.events.on("propertychanged", function (ev) {
       range0.endValue = ev.target.value;
       range1.value = ev.target.value;
@@ -106,11 +113,9 @@ export default function Chart({data,percent}) {
       1000,
       am4core.ease.cubicOut
     ).start();
-    
-   
   }, [percent]);
 
-  const stat = ()=>{
+  const stat = () => {
     // let purcent = (puissanceTotal - puissanceConsommee) * 100/puissanceTotal;
     // console.log(handState);
     // let animation = new am4core.Animation(
@@ -122,12 +127,10 @@ export default function Chart({data,percent}) {
     //   1000,
     //   am4core.ease.cubicOut).start();
     // setPuissanceConsommee(puissanceConsommee + 1);
-
-  }
+  };
   // setInterval(() => {
   //   stat()
   // }, 2000);
-
 
   return (
     <div>
