@@ -3,9 +3,9 @@ import React from "react";
 export default function FactureList() {
   return (
     <div className="ui content">
-      <div class="ui  fluid centered card">
+      <div class="ui  fluid centered  inverted"  style={{border : "2px solid gray", margin:10}}>
         <div class="content">
-          <table class="ui red table unstackable">
+          <table class="ui  table unstackable inverted">
             <tbody>
               <tr>
                 <td>Code</td>
@@ -19,12 +19,16 @@ export default function FactureList() {
                 <td>Puissance</td>
                 <td>35Kwh</td>
               </tr>
+              <tr>
+                <td>Date</td>
+                <td>23 octobre 2020</td>
+              </tr>
             </tbody>
           </table>
         </div>
-        <div class="extra content">
+        {/* <div class="extra content">
           <div class="right floated author">Acheté il y a 3jrs</div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
