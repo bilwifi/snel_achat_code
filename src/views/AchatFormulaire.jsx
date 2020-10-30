@@ -24,7 +24,7 @@ export default function AchatFormulaire() {
       setLoading(true);
       const data = {
         id: Math.ceil(Math.random() * 15000),
-        code: "123456",
+        code: randomNumber(14),
         montant: montant,
         puissance: montant / 100,
         compteur: "12345789",
@@ -79,12 +79,16 @@ export default function AchatFormulaire() {
     setMontantErr("");
     return true;
   };
-
+  const randomNumber = (car = 12) => {
+    var min = 10 ** (car - 1); // le minimum
+    var max = 10 ** car; // le maximum
+    return Math.floor(Math.random() * (max - min)) + min;
+  };
   if (isPendingPayement) {
     return (
-      <div className="" style={{marginTop:300, textAlign:"center"}} >
-       <Loader/>
-       <h3>En attente du payement !!</h3>
+      <div className="" style={{ marginTop: 300, textAlign: "center" }}>
+        <Loader />
+        <h3>En attente du payement !!</h3>
       </div>
     );
   }
