@@ -153,7 +153,7 @@ export default function AchatFormulaire() {
                 </tr>
                 <tr>
                   <td>Puissance</td>
-                  <td>{fact.montant} Kwh</td>
+                  <td>{fact.puissance} Kwh</td>
                 </tr>
               </tbody>
             </table>
