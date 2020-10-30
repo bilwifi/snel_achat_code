@@ -1,6 +1,8 @@
 import React from "react";
 import Chart from "../components/Chart";
 import Card from "../components/Card";
+import Loader from "../components/Loader"
+
 const data = {
   puissanceTotal: 100,
   puissanceConsommee: 43,
@@ -24,9 +26,11 @@ export default function Home() {
   const [puissanceConsommee, setPuissanceConsommee] = React.useState(
     dataStat.puissanceConsommee
   );
+  const [loading, setLoading] = React.useState(true);
   const [percent, setPercent] = React.useState(dataStat.percent);
   React.useEffect(() => {
     setDataStat(calculStat(data));
+    setLoading(false)
   }, [puissanceConsommee]);
 
   setInterval(() => {
@@ -38,6 +42,12 @@ export default function Home() {
   }, 10000);
 
   console.log(dataStat);
+
+  if (loading) {
+    return (
+     <Loader/>
+    );
+  }
   return (
     <div>
         

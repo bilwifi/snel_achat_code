@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import 'moment/locale/fr';
+import moment from "moment"
+import Loader from "../components/Loader"
+moment.locale('fr');
 export default function FactureList() {
   const [factures, setFactures] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,6 +23,11 @@ export default function FactureList() {
         console.log(e);
       });
   }, []);
+  if (loading) {
+    return (
+     <Loader/>
+    );
+  }
   return (
     <div className="ui content" style={{marginBottom:60}}>
       <h3 style={{textAlign:"center",margin:20}}>Mes factures</h3>
@@ -45,8 +54,8 @@ export default function FactureList() {
                       <td>{facture.puissance}Kwh</td>
                     </tr>
                     <tr>
-                      <td>Date</td>
-                      <td>{facture.created_at}</td>
+                      <td>Acheté</td>
+                      <td>{moment(facture.created_at).fromNow()}</td>
                     </tr>
                   </tbody>
                 </table>

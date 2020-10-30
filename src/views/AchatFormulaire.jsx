@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Loader from "../components/Loader";
+
 import "../assets/scss/footer.scss";
 export default function AchatFormulaire() {
   const [montant, setMontant] = useState(0);
@@ -7,11 +10,44 @@ export default function AchatFormulaire() {
   const [telephoneErr, setTelephoneErr] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isPendingPayement, setIsPendingPayement] = useState(false);
+  const [fact, setFact] = useState({});
 
+  const [loading, setLoading] = useState(true);
+
+  React.useEffect(() => {
+    setLoading(false);
+  }, []);
   const _submit = (e) => {
     e.preventDefault();
     if (validatorMontant(montant) && validatorphonenumber(telephone)) {
-      setIsSubmit(true);
+      setLoading(true);
+      const data = {
+        id: Math.ceil(Math.random() * 15000),
+        code: "123456",
+        montant: montant,
+        puissance: montant / 100,
+        compteur: "12345789",
+        created_at: new Date(),
+      };
+
+      setFact(data);
+      setIsPendingPayement(true);
+      setTimeout(() => {
+        axios
+          .post("http://localhost:4500/api/factures", data)
+          .then((res) => {
+            setIsError(false);
+            setIsSubmit(true);
+            setLoading(false);
+            setIsPendingPayement(false);
+          })
+          .catch((e) => {
+            setIsError(true);
+            setLoading(false);
+            console.log(e);
+          });
+      }, 10000);
     }
   };
 
@@ -43,6 +79,19 @@ export default function AchatFormulaire() {
     setMontantErr("");
     return true;
   };
+
+  if (isPendingPayement) {
+    return (
+      <div className="" style={{marginTop:300, textAlign:"center"}} >
+       <Loader/>
+       <h3>En attente du payement !!</h3>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return <Loader />;
+  }
 
   if (isError) {
     return (
@@ -92,15 +141,15 @@ export default function AchatFormulaire() {
               <tbody>
                 <tr>
                   <td>Code</td>
-                  <td>123456789</td>
+                  <td>{fact.code}</td>
                 </tr>
                 <tr>
                   <td>Montant</td>
-                  <td>3500 fc</td>
+                  <td>{fact.montant} fc</td>
                 </tr>
                 <tr>
                   <td>Puissance</td>
-                  <td>35Kwh</td>
+                  <td>{fact.montant} Kwh</td>
                 </tr>
               </tbody>
             </table>
@@ -118,7 +167,10 @@ export default function AchatFormulaire() {
   }
 
   return (
-    <div style={{marginTop:50}} className="ui middle aligned center aligned grid">
+    <div
+      style={{ marginTop: 50 }}
+      className="ui middle aligned center aligned grid"
+    >
       <h3
         className="ui middle  aligned center aligned grid"
         style={{ margin: 10 }}

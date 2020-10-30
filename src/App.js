@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { HashRouter, Route, Switch } from "react-router-dom";
 import './App.css';
-
+import Loader from "./components/Loader"
 const loading = (
-  <div className="pt-3 text-center">
-    <div className="sk-spinner sk-spinner-pulse"></div>
-  </div>
+  <Loader/>
 );
 
 // Containers
