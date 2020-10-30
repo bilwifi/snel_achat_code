@@ -11,7 +11,7 @@ export default function FactureList() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:4500/api/factures")
+      .get("https://snel-simulateur.herokuapp.com/api/factures")
       .then((res) => {
         setFactures(res.data);
         setErr(false);

@@ -35,7 +35,7 @@ export default function AchatFormulaire() {
       setIsPendingPayement(true);
       setTimeout(() => {
         axios
-          .post("http://localhost:4500/api/factures", data)
+          .post("https://snel-simulateur.herokuapp.com/api/factures", data)
           .then((res) => {
             setIsError(false);
             setIsSubmit(true);
