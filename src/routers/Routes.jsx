@@ -15,11 +15,11 @@ import FactureList from "../views/FactureList";
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route path="/factures">
+      <Route   path="/home/factures">
         <FactureList />
+      </Route>
+      <Route exact path="/home">
+        <Home />
       </Route>
       
     </Switch>

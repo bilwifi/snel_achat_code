@@ -17,7 +17,7 @@ function TheContent() {
         <Switch>
           <Routes />
           
-          {/* <Redirect from="/" to="/dashboard" /> */}
+          {/* <Redirect from="/" to="/login" /> */}
         </Switch>
       </Suspense>
       {/* </Container> */}

@@ -9,6 +9,7 @@ const loading = (
 // Containers
 const TheLayout = React.lazy(() => import("./containers/TheLayout"));
 const AchatFormulaire = React.lazy(() => import("./views/AchatFormulaire"));
+const Login = React.lazy(() => import("./views/Login"));
 // Pages
 // const Login = React.lazy(() => import('./views/pages/Login'));
 // const Page404 = React.lazy(() => import('./views/pages/Page404'));
@@ -23,11 +24,15 @@ class App extends Component {
             {/* <Route exact path="/login" name="Login Page" render={props => <Login {...props}/>} />
               <Route exact path="/404" name="Page 404" render={props => <Page404 {...props}/>} />
               <Route exact path="/500" name="Page 500" render={props => <Page500 {...props}/>} /> */}
-            <Route exact path="/achat">
+            <Route exact path="/">
+              <Login />
+            </Route>
+            <Route  path="/achat">
               <AchatFormulaire />
             </Route>
+            
             <Route
-              path="/"
+              path="/home"
               name="Home"
               render={(props) => <TheLayout {...props} />}
             />

@@ -108,7 +108,7 @@ export default function AchatFormulaire() {
 
         <div class="app-bar-bottom">
           <div class="btnplus">
-            <a class="btn__content" href="#/">
+            <a class="btn__content" href="#/home">
               <i class="material-icons">clear</i>
             </a>
           </div>
@@ -161,7 +161,7 @@ export default function AchatFormulaire() {
         </div>
         <div style={{ textAlign: "center" }}>
           <button class=" ui  large secondary fluide button" type="reset">
-            <a href="#/" style={{ color: "white" }}>
+            <a href="#/home" style={{ color: "white" }}>
               Fermer
             </a>
           </button>
@@ -260,7 +260,7 @@ export default function AchatFormulaire() {
           >
             <button class=" ui  large teal  button">Valider</button>
             <button class=" ui  large secondary  button" type="reset">
-              <a href="#/" style={{ color: "white" }}>
+              <a href="#/home" style={{ color: "white" }}>
                 Fermer
               </a>
             </button>
