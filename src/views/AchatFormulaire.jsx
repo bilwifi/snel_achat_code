@@ -183,48 +183,6 @@ export default function AchatFormulaire() {
       </h3>
       <div class="ui middle aligned center aligned grid" style={{ margin: 10 }}>
         <form class="ui form inverted error" onSubmit={_submit}>
-          <div class="field">
-            <label>Montant(FC)</label>
-            <input
-              type="number"
-              name="first-name"
-              placeholder="Montant en FC"
-              // value={montant}
-              onChange={(e) => {
-                setMontant(e.target.value);
-                setMontantErr("");
-                validatorMontant(e.target.value);
-              }}
-            />
-            {montantErr != "" ? (
-              <div style={{ margin: 0, color: "red" }}>
-                <p>{montantErr}</p>
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
-
-          <div class="field">
-            <label>Téléphone</label>
-            <input
-              type="text"
-              name="first-name"
-              placeholder="0818855044"
-              onChange={(e) => {
-                setTelephone(e.target.value);
-                setMontantErr("");
-                validatorphonenumber(e.target.value);
-              }}
-            />
-            {telephoneErr != "" ? (
-              <div style={{ margin: 0, color: "red" }}>
-                <p>{telephoneErr}</p>
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
           <div className="field">
             <label>Moyen de payement</label>
           </div>
@@ -254,6 +212,49 @@ export default function AchatFormulaire() {
               </div>
             </div>
           </div>
+          <div class="field">
+            <label>Téléphone</label>
+            <input
+              type="text"
+              name="first-name"
+              placeholder="0818855044"
+              onChange={(e) => {
+                setTelephone(e.target.value);
+                setMontantErr("");
+                validatorphonenumber(e.target.value);
+              }}
+            />
+            {telephoneErr != "" ? (
+              <div style={{ margin: 0, color: "red" }}>
+                <p>{telephoneErr}</p>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+
+          <div class="field">
+            <label>Montant(FC)</label>
+            <input
+              type="number"
+              name="first-name"
+              placeholder="Montant en FC"
+              // value={montant}
+              onChange={(e) => {
+                setMontant(e.target.value);
+                setMontantErr("");
+                validatorMontant(e.target.value);
+              }}
+            />
+            {montantErr != "" ? (
+              <div style={{ margin: 0, color: "red" }}>
+                <p>{montantErr}</p>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+
           <div
             className="center"
             style={{ textAlign: "center", marginBottom: 5 }}

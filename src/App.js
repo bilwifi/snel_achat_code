@@ -30,7 +30,6 @@ class App extends Component {
             <Route  path="/achat">
               <AchatFormulaire />
             </Route>
-            
             <Route
               path="/home"
               name="Home"

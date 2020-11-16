@@ -1,7 +1,7 @@
 import React from "react";
 import Chart from "../components/Chart";
 import Card from "../components/Card";
-import Loader from "../components/Loader"
+import Loader from "../components/Loader";
 
 const data = {
   puissanceTotal: 100,
@@ -30,11 +30,10 @@ export default function Home() {
   const [percent, setPercent] = React.useState(dataStat.percent);
   React.useEffect(() => {
     setDataStat(calculStat(data));
-    setLoading(false)
+    setLoading(false);
   }, [puissanceConsommee]);
 
   setInterval(() => {
-    // setPuissanceConsommee(puissanceConsommee +1)
     if (data.puissanceConsommee < data.puissanceTotal) {
       let p = data.puissanceConsommee++;
       setPuissanceConsommee(p);
@@ -43,16 +42,14 @@ export default function Home() {
 
   console.log(dataStat);
 
+  
   if (loading) {
-    return (
-     <Loader/>
-    );
+    return <Loader />;
   }
   return (
     <div>
-        
       {dataStat.puissR <= 0 ? (
-        <div className="ui icon negative message" style={{marginBottom:0}}>
+        <div className="ui icon negative message" style={{ marginBottom: 0 }}>
           <i className="notched circle loading icon"></i>
           <div className="content">
             <div className="header">Votre forfait est épuisé</div>
@@ -63,7 +60,7 @@ export default function Home() {
         ""
       )}
 
-      <Chart data={dataStat} percent={dataStat.percent}/>
+      <Chart data={dataStat} percent={dataStat.percent} />
       <Card data={dataStat} />
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Loader from "../components/Loader";
+import Splash from "../components/Splash";
 import {
   Redirect,
 } from "react-router-dom";
@@ -21,7 +21,10 @@ export default function AchatFormulaire() {
   const [login, setLogin] = useState(false);
 
   React.useEffect(() => {
-    setLoading(false);
+    setInterval(() => {
+      setLoading(false);
+
+    }, 5000);
   }, []);
   const _submit = (e) => {
     e.preventDefault();
@@ -49,7 +52,7 @@ export default function AchatFormulaire() {
       setNumCompteurErr("Veillez entrer le numero de compteur ");
       return false;
     }
-    if (num != "123456789") {
+    if (num != "12345678900000") {
       setNumCompteurErr("Numero de compteur invalide");
       return false;
     }
@@ -59,7 +62,7 @@ export default function AchatFormulaire() {
   };
 
   if (loading) {
-    return <Loader />;
+    return <Splash/>;
   }
 
   if (isError) {
@@ -90,15 +93,16 @@ export default function AchatFormulaire() {
       style={{ marginTop: 100 }}
       className="ui middle aligned center aligned "
     >
+      
+      <div className="center" style={{ textAlign: "center" }}>
+        <img src={snelImg} alt="" width="150" height="150" />
+      </div>
       <h3
         className="ui middle  aligned center aligned grid"
         style={{ margin: 10 }}
       >
-        {/* Connexion */}
+        SAE
       </h3>
-      <div className="center" style={{ textAlign: "center" }}>
-        <img src={snelImg} alt="" width="150" height="150" />
-      </div>
       <div class="" style={{ margin: 10 }}>
         <form class="ui form inverted error" onSubmit={_submit}>
           <div class="field">
@@ -106,7 +110,7 @@ export default function AchatFormulaire() {
             <input
               type="text"
               name="first-name"
-              placeholder="123456789"
+              placeholder="12345678900000"
               // value={montant}
               onChange={(e) => {
                 setNumCompteur(e.target.value);
