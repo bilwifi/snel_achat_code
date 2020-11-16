@@ -66,6 +66,11 @@ export default function AchatFormulaire() {
     }
   };
 
+  const validatorNumberReseaux = (reseau,inputtxt)=>{
+
+    const orange = /#^[085 089 088]#/
+  }
+
   const validatorMontant = (montant) => {
     if (montant == "") {
       setMontantErr("Veillez entrer un montant");

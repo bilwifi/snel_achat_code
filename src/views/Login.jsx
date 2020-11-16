@@ -24,7 +24,7 @@ export default function AchatFormulaire() {
     setInterval(() => {
       setLoading(false);
 
-    }, 5000);
+    }, 3000);
   }, []);
   const _submit = (e) => {
     e.preventDefault();
